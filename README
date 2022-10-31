@@ -1,6 +1,7 @@
  Version française (english below): 
-Projet pour le cours Python for Data science ENSAE Paris de 2022-2023. Le projet consiste à l'analyse des différents Crous. 
+Projet pour le cours Python for Data science ENSAE Paris de 2022-2023. Le projet consiste à l'analyse des différents Crous.
 
+Base de données : Nous utilisons la base de données réalisées par le Ministère de l'Enseignement supérieur et de la Recherche. Cette base de données qui est en licence ouverte, a été réalisée en 2017.  
 
  English version: 
 Python project for the Data science course at ENSAE Paris from 2022-2023. The aim of the project is to analyse the social residences of French students.  
