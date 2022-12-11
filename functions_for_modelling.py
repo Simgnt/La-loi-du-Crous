@@ -264,4 +264,5 @@ def get_sklearn_regression(Xcolumn,Yvolumn,nomX,nomY):
     plt.xlabel("nomX") # adding the name of x-axis
     plt.ylabel("nomY") # adding the name of y-axis
     plt.show() # specifies end of graph
+    
     return (r_2, coefficients_sans_cst)
