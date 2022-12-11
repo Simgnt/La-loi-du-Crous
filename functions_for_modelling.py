@@ -247,9 +247,9 @@ def get_OLS_reg(Xcolumn,Ycolumn):
     fig = sm.qqplot(res, fit=True, line="45") 
     return(model.summary(), plt.show())
 
-def get_sklearn_regression(Xcolumn,Yvolumn,nomX,nomY):
-    X=np.array(X).reshape(-1,1) ##on transforme Y et X en matrices colonnes
-    Y = np.array(Y).reshape(-1,1)
+def get_sklearn_regression(Xcolumn,Ycolumn,nomX,nomY):
+    X=np.array(Xcolumn).reshape(-1,1) ##on transforme Y et X en matrices colonnes
+    Y = np.array(Ycolumn).reshape(-1,1)
     X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3,train_size=0.7)
     lin= LinearRegression()
     reg = lin.fit(X_train,Y_train)
@@ -260,9 +260,8 @@ def get_sklearn_regression(Xcolumn,Yvolumn,nomX,nomY):
     
     plt.scatter(X_train, Y_train, color='red') # plotting the observation line
     plt.plot(X_train, lin.predict(X_train), color='blue') # plotting the regression line
-    plt.title("nomY vs nomX (Training set)") # stating the title of the graph
-    plt.xlabel("nomX") # adding the name of x-axis
-    plt.ylabel("nomY") # adding the name of y-axis
+    plt.xlabel(nomX) # adding the name of x-axis
+    plt.ylabel(nomY) # adding the name of y-axis
     plt.show() # specifies end of graph
     
-    return (r_2, coefficients_sans_cst)
+    return ({'r_square=': r_2, 'coefficients_sans_cst=': float(coefficients_sans_cst[0])})
