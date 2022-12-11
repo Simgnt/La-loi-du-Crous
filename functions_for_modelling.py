@@ -240,9 +240,28 @@ def get_localisation(df):
     df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.Longitude, df.Latitude))
     return df
 
-def get_simple_OLS_reg(Xcolumn,Ycolumn):
+def get_OLS_reg(Xcolumn,Ycolumn):
     Xcolumn= sm.add_constant(Xcolumn)
     model = sm.OLS(Ycolumn, Xcolumn).fit()
     res = model.resid
     fig = sm.qqplot(res, fit=True, line="45") 
     return(model.summary(), plt.show())
+
+def get_sklearn_regression(Xcolumn,Yvolumn,nomX,nomY):
+    X=np.array(X).reshape(-1,1) ##on transforme Y et X en matrices colonnes
+    Y = np.array(Y).reshape(-1,1)
+    X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3,train_size=0.7)
+    lin= LinearRegression()
+    reg = lin.fit(X_train,Y_train)
+    pred_train = lin.predict(X_train)
+    pred_test = lin.predict(X_test)
+    coefficients_sans_cst= reg.coef_
+    r_2 = reg.score(X_train,Y_train)
+    
+    plt.scatter(X_train, Y_train, color='red') # plotting the observation line
+    plt.plot(X_train, lin.predict(X_train), color='blue') # plotting the regression line
+    plt.title("nomY vs nomX (Training set)") # stating the title of the graph
+    plt.xlabel("nomX") # adding the name of x-axis
+    plt.ylabel("nomY") # adding the name of y-axis
+    plt.show() # specifies end of graph
+    return (r_2, coefficients_sans_cst)
