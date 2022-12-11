@@ -239,3 +239,10 @@ def get_localisation(df):
     df['Latitude'] = Latitude
     df = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.Longitude, df.Latitude))
     return df
+
+def get_simple_OLS_reg(Xcolumn,Ycolumn):
+    Xcolumn= sm.add_constant(Xcolumn)
+    model = sm.OLS(Ycolumn, Xcolumn).fit()
+    res = model.resid
+    fig = sm.qqplot(res, fit=True, line="45") 
+    return(model.summary(), plt.show())
