@@ -8,6 +8,7 @@ nltk.download('punkt')
 import numpy as np
 import geopandas as gpd
 from shapely import wkt 
+import statsmodels.api as sm
 
 
 """
