@@ -266,6 +266,14 @@ def get_OLS_reg(Xcolumn,Ycolumn):
     fig = sm.qqplot(res, fit=True, line="45") 
     return(model.summary(), plt.show())
 
+def get_4_plots(Xcolumn,Ycolumn):
+    Xcolumn= sm.add_constant(Xcolumn)
+    model = sm.OLS(Ycolumn, Xcolumn).fit()
+    res = model.resid
+    fig = plt.figure(figsize=(12,8))
+    return(sm.graphics.plot_regress_exog(model,'upr.IPm2', fig=fig))
+
+
 def get_sklearn_regression(Xcolumn,Ycolumn,nomX,nomY):
     X=np.array(Xcolumn).reshape(-1,1) ##on transforme Y et X en matrices colonnes
     Y = np.array(Ycolumn).reshape(-1,1)
