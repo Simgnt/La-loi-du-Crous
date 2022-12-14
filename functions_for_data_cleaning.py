@@ -7,7 +7,7 @@
 # ---------------------------------------------------------------------------
 """ 
 Functions for data cleaning 
-Document python contenant les fonctions nécessaires pour le nettoyage des données du dataframe. Elles seront ensuite importés dans le notebook final. Il y a quatre partis (correspondant aux 4 parties du nettoyages): 
+Document python contenant les fonctions nécessaires pour le nettoyage des données du dataframe. Elles seront ensuite importés dans le notebook final. Il y a quatre parties (correspondant aux 4 parties du nettoyages): 
 - get_loyer : pour récuppèrer le loyer des résidences;
 - get_surface : idem pour les surfaces;
 - get_localisation : permet de récuppèrer les coordonnées de la résidence sous la forme adéquate pour un GéoDataFrame;
