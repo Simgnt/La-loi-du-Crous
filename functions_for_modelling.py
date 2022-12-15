@@ -1,8 +1,8 @@
 #!/usr/bin/env python3  
 # -*- coding: utf-8 -*- 
 #----------------------------------------------------------------------------
-# Created By  : name_of_the_creator   
-# Created Date: date/month/time ..etc
+# Created By  : btny99
+# Created Date: 1/12/2022
 # version ='1.0'
 # ---------------------------------------------------------------------------
 """ Details about the module and for what purpose it was built for"""  #Line 4
@@ -48,6 +48,14 @@ def get_4_plots(Xcolumn,Ycolumn):
     fig = plt.figure(figsize=(12,8))
     sm.graphics.plot_regress_exog(model,'upr.IPm2', fig=fig)
     return
+
+def get_bp_test(Xcolumn,Ycolumn):
+    Xcolumn= sm.add_constant(Xcolumn)
+    model = sm.OLS(Ycolumn, Xcolumn).fit()
+    res = model.resid
+    bp_test=sm.stats.diagnostic.het_breuschpagan(res,Xcolumn)
+    labels = ['LM Statistic', 'LM-Test p-value', 'F-Statistic', 'F-Test p-value']
+    return('breusch_pagan_results=',dict(zip(labels, bp_test)))
 
 
 def get_sklearn_regression(Xcolumn,Ycolumn,nomX,nomY):
