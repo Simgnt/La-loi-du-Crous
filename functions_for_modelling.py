@@ -49,7 +49,7 @@ def get_4_plots(Xcolumn,Ycolumn):
     sm.graphics.plot_regress_exog(model,'upr.IPm2', fig=fig)
     return
 
-def get_bp_test(Xcolumn,Ycolumn):
+def get_bp_test_OLS(Xcolumn,Ycolumn):
     Xcolumn= sm.add_constant(Xcolumn)
     model = sm.OLS(Ycolumn, Xcolumn).fit()
     res = model.resid
@@ -57,6 +57,9 @@ def get_bp_test(Xcolumn,Ycolumn):
     labels = ['LM Statistic', 'LM-Test p-value', 'F-Statistic', 'F-Test p-value']
     return('breusch_pagan_results=',dict(zip(labels, bp_test)))
 
+def get_RLM(Xcolumn, Ycolumn):
+    Xcolumn = sm.add_constant(Xcolumn) #on ajoute l'intercept à la variable explicative. 
+    return(print(sm.RLM(Ycolumn, Xcolumn).fit().summary()))
 
 def get_sklearn_regression(Xcolumn,Ycolumn,nomX,nomY):
     X=np.array(Xcolumn).reshape(-1,1) ##on transforme Y et X en matrices colonnes
