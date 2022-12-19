@@ -34,20 +34,16 @@ Part IV : Régressions
 """
 
 
-def get_OLS_reg(Xcolumn,Ycolumn):
-    Xcolumn= sm.add_constant(Xcolumn)
-    model = sm.OLS(Ycolumn, Xcolumn).fit()
-    res = model.resid
-    fig = sm.qqplot(res, fit=True, line="45") 
-    return(model.summary(), plt.show())
+def get_OLS_reg(Xcolumn,Ycolumn): 
+    Xcolumn= sm.add_constant(Xcolumn) #on ajoute une constante au vecteur de prédiction 
+    return(print(sm.OLS(Ycolumn, Xcolumn).fit().summary())) #on #on définit le modèle de régression linéaire et la fonction summary permet d'afficher le tableau récapitulatif
 
-def get_4_plots(Xcolumn,Ycolumn):
-    Xcolumn= sm.add_constant(Xcolumn)
-    model = sm.OLS(Ycolumn, Xcolumn).fit()
-    res = model.resid
-    fig = plt.figure(figsize=(12,8))
-    sm.graphics.plot_regress_exog(model,'upr.IPm2', fig=fig)
-    return
+def get_qqplot(Xcolumn,Ycolumn):
+    Xcolumn= sm.add_constant(Xcolumn) #on ajoute une constante au vecteur de prédiction
+    model = sm.OLS(Ycolumn, Xcolumn).fit() #on définit le modèle de régression linéaire
+    res = model.resid #on crée la variable res qui correspond aux résidus du modèle
+    fig = sm.qqplot(res, fit=True, line="45") #
+    return (plt.show())
 
 def get_bp_test_OLS(Xcolumn,Ycolumn):
     Xcolumn= sm.add_constant(Xcolumn)
@@ -58,7 +54,7 @@ def get_bp_test_OLS(Xcolumn,Ycolumn):
     return('breusch_pagan_results=',dict(zip(labels, bp_test)))
 
 def get_RLM(Xcolumn, Ycolumn):
-    Xcolumn = sm.add_constant(Xcolumn) #on ajoute l'intercept à la variable explicative. 
+    Xcolumn = sm.add_constant(Xcolumn) #on ajoute l'intercept à la variable explicative.
     return(print(sm.RLM(Ycolumn, Xcolumn).fit().summary()))
 
 def get_sklearn_regression(Xcolumn,Ycolumn,nomX,nomY):
