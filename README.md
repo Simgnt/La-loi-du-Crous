@@ -7,6 +7,8 @@
 
 **Objectifs du projet :** Analyser les déterminants des loyers des résidences des Centre régional des œuvres universitaires et scolaires (CROUS). Pour ce faire, nous avons extrait les loyers et les surfaces d'une base en open Data réalisée par le Ministère de l'Enseignement supérieur et de la Recherche à l'aide de techniques d'analyse textuelle (NLP). Nous avons ensuite couplé notre base de données avec celle des loyers du parc privé (constituée pas uniquement des résidences étudiantes privées) et avec celle du nombre d'étudiants par établissements supérieurs. Nous avons pu visualisé nos données à l'aide de graphiques variés (carte interactive, carte statistique, barplots, lolipop). Dernièrement, nous avons implémenté des modèles de régressions linéaires pour mener à bien notre projet. 
 
+**Problématique :** *Les loyers des résidences des Crous suivent-ils la loi de l'offre et de la demande ?*
+
 ## Récapitulatif des fichiers présents sur notre Github: 
 + **La loi du Crous.ipynb** : notebook principal ;
 + **functions_for_data_cleaning.py** : fonctions nécessaires à la première partie (obtention du dataframe) ;
