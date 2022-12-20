@@ -1,7 +1,17 @@
-  Version française (english below): 
-Projet pour le cours Python for Data science ENSAE Paris de 2022-2023. Le projet consiste à l'analyse des différents Crous.
+**LA LOI DU CROUS** 
 
-Base de données : Nous utilisons la base de données réalisées par le Ministère de l'Enseignement supérieur et de la Recherche. Cette base de données qui est en licence ouverte, a été réalisée en 2017.
+Projet pour le cours Python for Data science ENSAE Paris de 2022-2023. 
+
+Le projet consiste à l'analyse des déterminants des prix des loyers des résidences des Centre régional des œuvres universitaires et scolaires (CROUS). 
+Nous complons nos données avec celles du nombres d'étudiants par établissements scolaires et les loyers dans le parc immobilier privé (pas seulement étudiants). 
+
+
+
+
+
+
+
+**Base de données :** Nous utilisons la base de données réalisées par le Ministère de l'Enseignement supérieur et de la Recherche. Cette base de données qui est en licence ouverte, a été réalisée en 2017.
 Elle a été remise à jour en 2018. La particularité de cette base de données est qu'elle a été remplie de manière différente par les Crous (répartis en différents territoires) et/ou par les résidences elles-mêmes. 
 Elle de comporte ni variables sur les loyers, ni sur les surfaces louables. Notre premier objectif a été donc d'extraire les loyers et les surfaces de la variable infos. 
 Pour plus d'informations : https://www.data.gouv.fr/fr/datasets/ensemble-des-logements-proposes-aux-etudiants-par-le-reseau-des-crous/.
@@ -10,11 +20,5 @@ Notre projet se découpe en 3 parties :
 I. (branche data_cleaning)  La première étape consista à la récuppération des loyers (le maximum, le minimum et la moyenne des loyers) et des surfaces (idem que pour le loyer), lorsque cela été possibles à partir de la variable infos. Nous perdons certaines résidences du fait du manque d'informations. 
 De même nous avons  réccupéré les différents services de chaque résidence. 
 II. (branche visualisation) Visualisation : Dans un deuxième temps, nous avons répresenté spatialement les différentes résidences et réalisées des analyses statistiques descriptives des résidences. 
-III. Modélisation : 
+III. Modélisation (branche_modelisation) : Dernièrement, nous avons réalisé des régressions linéaires.
 
-
-
-
-
- English version: 
-Python project for the Data science course at ENSAE Paris from 2022-2023. The aim of the project is to analyse the social residences of French students.  
