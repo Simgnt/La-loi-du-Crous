@@ -3,7 +3,7 @@
 ## *Étude des déterminations du prix des résidences universitaires Crous et de leurs répartitions dans les départements*
 ---
 
-*Projet pour le cours Python for Data science ENSAE Paris de 2022-2023.* 
+*Projet pour le cours Python for Data science (M1) ENSAE Paris de 2022-2023.* 
 
 **Objectifs du projet :** Analyser les déterminants des loyers des résidences des Centre régional des œuvres universitaires et scolaires (Crous). Pour ce faire, nous avons extrait les loyers et les surfaces d'une base en *open data* réalisée par le Ministère de l'Enseignement supérieur et de la Recherche à l'aide de techniques d'analyse textuelle (NLP). Nous avons ensuite couplé notre base de données avec celle des loyers du parc privé (constituée pas uniquement des résidences étudiantes privées) et avec celle du nombre d'étudiants par établissements supérieurs. Nous avons pu visualisé nos données à l'aide de graphiques variés (carte interactive, carte statistique, barplots, lolipop). Dernièrement, nous avons implémenté des modèles de régressions linéaires pour mener à bien notre projet. 
 
