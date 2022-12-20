@@ -11,9 +11,9 @@
 + **La loi du Crous.ipynb** : notebook principal ;
 + **functions_for_data_cleaning.py** : fonctions nécessaires à la première partie (obtention du dataframe) ;
 + **functions_for_modelling_1.py**: fonctions nécessaires à la dernière partie (modelisation) ;
-+ **fr_crous_logement_france_entiere.csv** : base de données initial (non nécessaire pour faire fonctionner le notebook, elle permet de bien comprendre la bas e de données). 
++ **fr_crous_logement_france_entiere.csv** : base de données initial (non nécessaire pour faire fonctionner le notebook, elle permet de bien comprendre la base de données). 
 
-**Compétences informatiques : 
+## Compétences informatiques : 
 + Pandas et Geopandas;
 + NLP ; 
 + matplotlib, seaborn, folium ; 
