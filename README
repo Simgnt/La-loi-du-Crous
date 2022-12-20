@@ -1,24 +1,27 @@
-**LA LOI DU CROUS** 
+---
+# **LA LOI DU CROUS :**
+## *Étude des déterminations du prix des résidences universitaires Crous et de leurs répartitions dans les départements*
+---
 
 Projet pour le cours Python for Data science ENSAE Paris de 2022-2023. 
 
-Le projet consiste à l'analyse des déterminants des prix des loyers des résidences des Centre régional des œuvres universitaires et scolaires (CROUS). 
-Nous complons nos données avec celles du nombres d'étudiants par établissements scolaires et les loyers dans le parc immobilier privé (pas seulement étudiants). 
+Objectifs du projet : Analyser les déterminants des loyers des résidences des Centre régional des œuvres universitaires et scolaires (CROUS). Pour ce faire, nous avons extrait les loyers et les surfaces d'une base en open Data réalisée par le Ministère de l'Enseignement supérieur et de la Recherche à l'aide de techniques d'analyse textuelle (NLP). Nous avons ensuite couplé notre base de données avec celle des loyers du parc privé (constituée pas uniquement des résidences étudiantes privées) et avec celle du nombre d'étudiants par établissements supérieurs. Nous avons pu visualisé nos données à l'aide de graphiques variés (carte interactive, carte statistique, barplots, lolipop). Dernièrement, nous avons implémenté des modèles de régressions linéaires pour mener à bien notre projet. 
+
+Récapitulatif des fichiers présents sur notre Github: 
++ La loi du Crous.ipynb : notebook principal ;
++ functions_for_data_cleaning.py : fonctions nécessaires à la première partie (obtention du dataframe) ;
++ functions_for_modelling_1.py : fonctions nécessaires à la dernière partie (modelisation) ;
++  fr_crous_logement_france_entiere.csv : base de données initial (non nécessaire pour faire fonctionner le notebook, elle permet de bien comprendre la bas e de données). 
+
+Compétences informatiques : 
++ Pandas et Geopandas;
++ NLP ; 
++ matplotlib, seaborn, folium ; 
++ statsmodels, sklearn;
 
 
 
+ 
 
 
-
-
-**Base de données :** Nous utilisons la base de données réalisées par le Ministère de l'Enseignement supérieur et de la Recherche. Cette base de données qui est en licence ouverte, a été réalisée en 2017.
-Elle a été remise à jour en 2018. La particularité de cette base de données est qu'elle a été remplie de manière différente par les Crous (répartis en différents territoires) et/ou par les résidences elles-mêmes. 
-Elle de comporte ni variables sur les loyers, ni sur les surfaces louables. Notre premier objectif a été donc d'extraire les loyers et les surfaces de la variable infos. 
-Pour plus d'informations : https://www.data.gouv.fr/fr/datasets/ensemble-des-logements-proposes-aux-etudiants-par-le-reseau-des-crous/.
-
-Notre projet se découpe en 3 parties : 
-I. (branche data_cleaning)  La première étape consista à la récuppération des loyers (le maximum, le minimum et la moyenne des loyers) et des surfaces (idem que pour le loyer), lorsque cela été possibles à partir de la variable infos. Nous perdons certaines résidences du fait du manque d'informations. 
-De même nous avons  réccupéré les différents services de chaque résidence. 
-II. (branche visualisation) Visualisation : Dans un deuxième temps, nous avons répresenté spatialement les différentes résidences et réalisées des analyses statistiques descriptives des résidences. 
-III. Modélisation (branche_modelisation) : Dernièrement, nous avons réalisé des régressions linéaires.
 
