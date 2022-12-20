@@ -19,6 +19,9 @@
 + matplotlib, seaborn, folium ; 
 + statsmodels, sklearn;
 
+## Auteurs: 
+
+Pauline Bian, Simon Genet et Bertille Tierny. 
 
 
  
