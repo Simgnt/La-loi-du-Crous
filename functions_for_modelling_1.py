@@ -1,25 +1,12 @@
-#!/usr/bin/env python3  
-# -*- coding: utf-8 -*- 
-#----------------------------------------------------------------------------
-# Created By  : btny99
-# Created Date: 1/12/2022
-# version ='1.0'
-# ---------------------------------------------------------------------------
-""" Details about the module and for what purpose it was built for"""  #Line 4
-# ---------------------------------------------------------------------------
-# Imports Line 5
-# ---------------------------------------------------------------------------
-#from ... import ...  #Line 6
+
 """
-function for data cleaning 
+function for modelling
 """
 
 import pandas as pd
-#import nltk
-#nltk.download('punkt')
+
 import numpy as np
-#import geopandas as gpd
-#from shapely import wkt 
+
 
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
