@@ -1,6 +1,6 @@
 ---
 # **LA LOI DU CROUS :**
-## *Étude des déterminations du prix des résidences universitaires Crous et de leurs répartitions dans les départements*
+## *Étude des déterminants du prix des résidences universitaires Crous et de leurs répartitions dans les départements*
 ---
 
 *Projet pour le cours Python for Data science (M1) ENSAE Paris de 2022-2023.* 
