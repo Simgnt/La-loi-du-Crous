@@ -1,10 +1,4 @@
-#!/usr/bin/env python3   
-# -*- coding: utf-8 -*- 
-#----------------------------------------------------------------------------
-# Created By  : Simon Genet  
-# Created Date: 20/11/22
-# version ='1.0'
-# ---------------------------------------------------------------------------
+
 """ 
 Functions for data cleaning 
 Document python contenant les fonctions nécessaires pour le nettoyage des données du dataframe. Elles seront ensuite importées dans le notebook final. Il y a quatre parties (correspondant aux 4 parties du nettoyage): 
@@ -14,14 +8,7 @@ Document python contenant les fonctions nécessaires pour le nettoyage des donn�
 - get_nb_student :permet de récupérer le nombre d'étudiants des écoles aux alentour de x km des résidences. 
 
 """  
-# ---------------------------------------------------------------------------
-# import pandas as pd
-#import nltk
-#nltk.download('punkt')
-#import numpy as np
-#import geopandas as gpd
-#from shapely import wkt 
-# ---------------------------------------------------------------------------
+
 
 import pandas as pd
 import nltk
