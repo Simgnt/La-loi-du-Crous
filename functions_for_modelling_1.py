@@ -33,17 +33,14 @@ from sklearn.model_selection import train_test_split
 Part IV : Régressions  
 """
 
+""" La fonction get_OLS_reg permet de construire une régression simple ou multipe, elle prend en argument la ou les variables explicatives (Xcolumn) et la variable expliquée (Ycolumn). Pour construire la régression on utilise les fonctions du module Statsmodels."""
 
 def get_OLS_reg(Xcolumn,Ycolumn): 
-    Xcolumn= sm.add_constant(Xcolumn) #on ajoute une constante au vecteur de prédiction 
-    return(print(sm.OLS(Ycolumn, Xcolumn).fit().summary())) #on #on définit le modèle de régression linéaire et la fonction summary permet d'afficher le tableau récapitulatif
+    Xcolumn= sm.add_constant(Xcolumn) #on ajoute une constante au vecteur de variables explicatives. 
+    return(print(sm.OLS(Ycolumn, Xcolumn).fit().summary())) #on définit le modèle de régression linéaire par la commande sm.OLS(Y,X).fit() et la fonction summary permet d'afficher le tableau récapitulatif
 
-def get_qqplot(Xcolumn,Ycolumn):
-    Xcolumn= sm.add_constant(Xcolumn) #on ajoute une constante au vecteur de prédiction
-    model = sm.OLS(Ycolumn, Xcolumn).fit() #on définit le modèle de régression linéaire
-    res = model.resid #on crée la variable res qui correspond aux résidus du modèle
-    fig = sm.qqplot(res, fit=True, line="45") #
-    return (plt.show())
+
+"""La fonction get_bp_test permet d'effectuer un test de Breusch-Pagan. Ce test permet de tester l'hypothèse HO "les résidus sont homoscedastiques". La fonction prend en argument la ou les variables explicatives (Xcolumn) et la variable expliquée (Ycolumn). """
 
 def get_bp_test_OLS(Xcolumn,Ycolumn):
     Xcolumn= sm.add_constant(Xcolumn)
@@ -53,25 +50,10 @@ def get_bp_test_OLS(Xcolumn,Ycolumn):
     labels = ['LM Statistic', 'LM-Test p-value', 'F-Statistic', 'F-Test p-value']
     return('breusch_pagan_results=',dict(zip(labels, bp_test)))
 
+
+"""La fonction get_RLM permet de construire une régression linéaire robuste prenant en compte une possible hétéroscedasticité des données. On utilise la commande RLM (Robust Linear Model) de Statsmodels. La fonction prend en argument la ou les variables explicatives (Xcolumn) et la variable expliquée (Ycolumn) de la régression."""
+
 def get_RLM(Xcolumn, Ycolumn):
     Xcolumn = sm.add_constant(Xcolumn) #on ajoute l'intercept à la variable explicative.
-    return(print(sm.RLM(Ycolumn, Xcolumn).fit().summary()))
+    return(print(sm.RLM(Ycolumn, Xcolumn).fit().summary())) #on définit cette fois le modèle de régression linéaire robust par la commande sm.RLM(Y,X).fit() et la fonction summary permet d'afficher le tableau récapitulatif
 
-def get_sklearn_regression(Xcolumn,Ycolumn,nomX,nomY):
-    X=np.array(Xcolumn).reshape(-1,1) ##on transforme Y et X en matrices colonnes
-    Y = np.array(Ycolumn).reshape(-1,1)
-    X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3,train_size=0.7)
-    lin= LinearRegression()
-    reg = lin.fit(X_train,Y_train)
-    pred_train = lin.predict(X_train)
-    pred_test = lin.predict(X_test)
-    coefficients_sans_cst= reg.coef_
-    r_2 = reg.score(X_train,Y_train)
-    
-    plt.scatter(X_train, Y_train, color='red') # plotting the observation line
-    plt.plot(X_train, lin.predict(X_train), color='blue') # plotting the regression line
-    plt.xlabel(nomX) # adding the name of x-axis
-    plt.ylabel(nomY) # adding the name of y-axis
-    plt.show() # specifies end of graph
-    
-    return ({'r_square=': r_2, 'coefficients_sans_cst=': float(coefficients_sans_cst[0])})
