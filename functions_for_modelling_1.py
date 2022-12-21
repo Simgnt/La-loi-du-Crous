@@ -1,6 +1,6 @@
 
 """
-function for modelling
+functions for modelling
 """
 
 import pandas as pd
