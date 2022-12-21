@@ -7,11 +7,11 @@
 # ---------------------------------------------------------------------------
 """ 
 Functions for data cleaning 
-Document python contenant les fonctions nécessaires pour le nettoyage des données du dataframe. Elles seront ensuite importés dans le notebook final. Il y a quatre parties (correspondant aux 4 parties du nettoyages): 
-- get_loyer : pour récuppèrer le loyer des résidences;
+Document python contenant les fonctions nécessaires pour le nettoyage des données du dataframe. Elles seront ensuite importées dans le notebook final. Il y a quatre parties (correspondant aux 4 parties du nettoyage): 
+- get_loyer : pour récupérer le loyer des résidences;
 - get_surface : idem pour les surfaces;
-- get_localisation : permet de récuppèrer les coordonnées de la résidence sous la forme adéquate pour un GéoDataFrame;
-- get_nb_student :permet de récuppèrer le nombre d'étudiant des écoles aux alentour de x km des résidences. 
+- get_localisation : permet de récupérer les coordonnées de la résidence sous la forme adéquate pour un GéoDataFrame;
+- get_nb_student :permet de récupérer le nombre d'étudiants des écoles aux alentour de x km des résidences. 
 
 """  
 # ---------------------------------------------------------------------------
@@ -37,7 +37,7 @@ Part I. Get_Loyer
 
 """
 I.A. String_checking
-String_checking est une fonction qui prend un mot en argument et un élèment et retourne 0 si l'élèmenet n'est 
+String_checking est une fonction qui prend un mot en argument et un élément et retourne 0 si l'élément n'est 
 pas inclus dans le mot et 1 inversement. 
 """
 
@@ -55,7 +55,7 @@ def string_checking(string, check):
 I.B. word_ban
 Cette fonction prend en argument un mot à tester et une liste. Elle va utiliser la fonction précédente pour
 vérifier qu'il n'y a aucun élèment de la liste dans notre mot. De même elle retourne 0 ou 1 en fonction de
-s'il y a un élèment ou non. 
+s'il y a un élément ou non. 
 """
 
 
@@ -68,19 +68,19 @@ def word_ban(string, liste):
 
 """
 I.C. rent
-On va créer une fonction pour trouver le loyer à partir de la fonction précèdente. La fonction prend pour argument un texte (ici df['infos'][j] qui correspond au texte informatif d'une résidence où se trouve le loyer. La fonction va nettoyer le texte d'une manière très précise : 
+On va créer une fonction pour trouver le loyer à partir de la fonction précédente. La fonction prend pour argument un texte (ici df['infos'][j] qui correspond au texte informatif d'une résidence où se trouve le loyer. La fonction va nettoyer le texte d'une manière très précise : 
 
-1 - On va enlever tout les espaces du texte de façon à n'avoir qu'un block uniforme de texte. 
-2 - on va enlever les parenthèses (problèmes souvent eu - à voir si c'est toujours le cas sans) 
-3 - On va enlever les petits 2 des mètres carrés qui posent souvent dans la suite du code. 
-4 - On va remplacer les à en € de façon à avoir les loyers qui sont inscrits de la manière suivante : 200 à 350€ (notrer recherche se fonde grâce au €). 
+1 - On va enlever tous les espaces du texte de façon à n'avoir qu'un block uniforme de texte. 
+2 - on va enlever les parenthèses.  
+3 - On va enlever les petits 2 des mètres carrés qui posent souvent problème dans la suite du code. 
+4 - On va remplacer les à en € de façon à avoir les loyers qui sont inscrits de la manière suivante : 200 à 350€ (notre recherche se fonde grâce au €). 
 5 - On va remplacer les 'euros' en €
 6 - on va remplacer les €€ en € car il peut y avoir des '200€à350€' qui deviennent '200€€350€'et nous on veut '200€350€'. 
 7 - On va rajouter un espace après chaque '€'. 
 8 - On normalise les , en . pour avoir les mêmes typologies
-9 - on enlever les : (à voir si sa fonctionne toujours sans). 
+9 - on va enlever les ":" . 
 
-On va ensuite tokeniser notre block de texte grâce à la fonction word_tokenize du package nltk. On va ainsi passer de blocks de caractères séparé par un espace à une liste de mots. 
+On va ensuite tokeniser notre block de texte grâce à la fonction word_tokenize du package nltk. On va ainsi passer de blocks de caractères séparés par un espace à une liste de mots. 
 
 Exemple (df["infos"][0]): 
 
@@ -101,7 +101,7 @@ On passe de :
 
 "['LogementsHLM', '70T1', '325€', '14T1bisde30m373.50€', '13T2de37m404€', 'Photosdelarésidence', 'https//www.flickr.com/photos/crousaixmarseilleavignon/albums/72157679829208245']"
 
-L'idée va ensuite de trouver le loyer grâce à cette liste de mot. On va ainsi appliquer la fonction rent. cette fonction prend en argument cette liste de mots. Pour chaque élèments de notre liste on va d'abord chercher l'index de € (s'il existe et s'il n'appartient pas à la liste des mots interdits - on ne veut pas les moments des cautions par exemple). On va ensuite regarder si le caractère à la gauche du € est un chiffre ou non. Si c'est un chiffre on va réetirer cela pour le caractère à gauche de ce dernier. Ainsi de suite jusqu'à trouver un élèment qui n'est pas un chiffre. Dans ce cas là on va arrêter et prendre le nombre entre les deux indices. Le problème est celui des virgule : on rajoute une condition qui dit que si on trouve une virgule on regarde à gauche si c'est un chiffre. On obtient ainsi une liste des loyers avec quelques valeurs abberrantes que l'on gera après. 
+L'idée va ensuite de trouver le loyer grâce à cette liste de mots. On va ainsi appliquer la fonction rent. cette fonction prend en argument cette liste de mots. Pour chaque éléments de notre liste on va d'abord chercher l'index de € (s'il existe et s'il n'appartient pas à la liste des mots interdits - on ne veut pas les montants des cautions par exemple). On va ensuite regarder si le caractère à la gauche du € est un chiffre ou non. Si c'est un chiffre on va réitérer cela pour le caractère à gauche de ce dernier. Ainsi de suite jusqu'à trouver un élèment qui n'est pas un chiffre. Dans ce cas là on va s'arrêter et prendre le nombre entre les deux indices. Le problème est celui des virgule : on rajoute une condition qui dit que si on trouve une virgule on regarde à gauche si c'est un chiffre. On obtient ainsi une liste des loyers avec quelques valeurs abberrantes que l'on gérera après. 
 
 """
             
@@ -149,7 +149,7 @@ def rent_find(residence, List_banned_word):
 
 """
 I.D remove
-fonction servant à ne garder que les loyers et enlever les quelques erreures du style 5.99 qui serait l'abonnement au wifi
+fonction servant à ne garder que les loyers et enlever les quelques erreurs du style 5.99 qui serait l'abonnement au wifi
 """
     
 def remove(residence, a, b):
@@ -259,7 +259,7 @@ IV.A. Within_fun
 Fonction qui a pour but de rajouter le nombre d'élèves de l'école si celle-ci est dans le rayon de x km autour de la résidence. 
 
 Arguments:
-Elle prend pour argument ecole_bool (bool pour booléen) qui  est soit égale à true si l'école est dans le rayon et false sinon. S est une liste stockant les noms des écoles qui sont dans ce rayon pour la résidence. idem pour N mais pour le nombre des élèves. 
+Elle prend pour argument ecole_bool (bool pour booléen) qui  est soit égale à true si l'école est dans le rayon et false sinon. S est une liste stockant les noms des écoles qui sont dans ce rayon pour la résidence. idem pour N mais pour le nombre d'élèves. 
 index = l'index de ecole_bool.
 var_1 = va correspondre à la colonne des noms des établissements.
 var_2 = va correspondre à la colonne au nombre des élèves.
@@ -298,7 +298,7 @@ IV.C. Get_nb_student
 Retourne le dataframe avec deux nouvelles colonnes avec le nom des écoles et le nombre des élèves dans un rayon de nb_km kilomètres. 
 
 Arguments: 
-df : le dataframe surlequel appliqué la fonction.
+df : le dataframe sur lequel appliquer la fonction.
 df_schools : le dataframe des écoles 
 nb_km : le rayon en km autour duquel on veut avoir les informations. 
 """
